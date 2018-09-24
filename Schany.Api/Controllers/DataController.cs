@@ -60,7 +60,26 @@ namespace Schany.Api.Controllers
         public async Task<Notification> UploadBinaryFile()
         {
             return await FileHelper.FileUpload(this.baseUri, Request, _hostingEnvironment);
-        } 
+        }
         #endregion
+
+        [HttpGet]
+        [Route("[action]")]
+        public Notification Des(string str)
+        {
+            //加密
+            var des_str = DESEncrypt.Encrypt(str);
+            //解密
+            var _str = DESEncrypt.Decrypt(des_str);
+
+            if (_str.Equals(str))
+            {
+                return new Notification(NotifyType.Success, "success");
+            }
+            else
+            {
+                return new Notification(NotifyType.Error, "error");
+            }
+        }
     }
 }

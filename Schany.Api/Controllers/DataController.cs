@@ -108,7 +108,7 @@ namespace Schany.Api.Controllers
         {
             filePath = _hostingEnvironment.WebRootPath + filePath;
             var data = ExcelHelper.ReadExcelToDataTable(filePath);
-            return new Notification(NotifyType.Success, "OK");
+            return ExcelHelper.ExportDataTableToExcel(data, this.baseUri, _hostingEnvironment);
         }        
         #endregion
     }

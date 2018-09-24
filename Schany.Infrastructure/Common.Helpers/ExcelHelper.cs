@@ -1,4 +1,5 @@
-﻿using NPOI.SS.UserModel;
+﻿using Microsoft.AspNetCore.Hosting;
+using NPOI.SS.UserModel;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -106,7 +107,62 @@ namespace Schany.Infrastructure.Common.Helpers
                 throw ex;
             }
         }
-         
-        
+
+        /// <summary>
+        /// 将DataTable数据表内容读取到Excel导出
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="baseUri"></param>
+        /// <param name="hostingEnvironment"></param>
+        /// <returns></returns>
+        public static Notification ExportDataTableToExcel(DataTable dt, 
+            string baseUri, 
+            IHostingEnvironment hostingEnvironment)
+        {
+            string fileName = Guid.NewGuid().ToString() + ".xlsx";
+            string fileDir = hostingEnvironment.WebRootPath + "\\Content\\TempFiles\\";
+            if (!Directory.Exists(fileDir))
+            {
+                Directory.CreateDirectory(fileDir);
+            }
+            string filePath = "/Content/TempFiles/" + fileName;
+
+            IWorkbook workbook = new NPOI.XSSF.UserModel.XSSFWorkbook();
+            ISheet sheet = workbook.CreateSheet("sheet1");
+            IRow Title = sheet.CreateRow(0);
+            for (int k = 0; k < dt.Columns.Count; k++)
+            {
+                Title.CreateCell(k).SetCellValue(dt.Columns[k].ColumnName);
+            }
+
+            IRow rows = null;
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                rows = sheet.CreateRow(i + 1);
+                for (int j = 0; j < dt.Columns.Count; j++)
+                {
+                    rows.CreateCell(j).SetCellValue(dt.Rows[i][j].ToString());
+                }
+            }
+
+            using (var stream = new FileStream(fileDir + fileName, FileMode.Create))
+            {
+                try
+                {
+                    workbook.Write(stream);
+                    return new Notification(NotifyType.Success, "导出成功", new
+                    {
+                        Name = fileName,
+                        Url = baseUri + filePath,
+                        _Url = filePath
+                    });
+                }
+                catch (Exception ex)
+                {
+                    return new Notification(NotifyType.Error, string.Format("导出成功：{0}。", ex.Message));
+                }
+            }
+        }
+
     }
 }

@@ -18,7 +18,9 @@ namespace Schany.Infrastructure.Common.Helpers
         /// <param name="files"></param>
         /// <param name="hostingEnvironment"></param>
         /// <returns></returns>
-        public static async Task<Notification> FileUpload(string baseUrl, IFormCollection files, IHostingEnvironment hostingEnvironment)
+        public static async Task<Notification> FileUpload(string baseUrl, 
+            IFormCollection files, 
+            IHostingEnvironment hostingEnvironment)
         {
             string rootPath = hostingEnvironment.WebRootPath + "\\Content\\UploadFiles\\";
             string fileUrl = "/Content/UploadFiles/";

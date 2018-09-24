@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Schany.Core.Dto.Sys;
 using Schany.Core.Service.Core.Sys;
+using Schany.Data.Enums;
 using Schany.Infrastructure;
+using Schany.Infrastructure.Common.Extensions;
 using Schany.Infrastructure.Common.Helpers;
 
 namespace Schany.Api.Controllers
@@ -63,6 +65,12 @@ namespace Schany.Api.Controllers
         }
         #endregion
 
+        #region DES加密类
+        /// <summary>
+        /// DES加密类
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("[action]")]
         public Notification Des(string str)
@@ -81,5 +89,15 @@ namespace Schany.Api.Controllers
                 return new Notification(NotifyType.Error, "error");
             }
         }
+        #endregion
+
+        #region 枚举扩展
+        [HttpGet]
+        [Route("[action]")]
+        public string GetEnumDes(DicType dic)
+        {
+            return dic.ToDescription();
+        } 
+        #endregion
     }
 }

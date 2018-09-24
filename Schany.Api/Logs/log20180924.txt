@@ -1317,3 +1317,96 @@ System.InvalidOperationException: Incorrect Content-Type: text/plain
 2018-09-24 17:21:11.515 +08:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
 2018-09-24 17:21:22.087 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
 2018-09-24 17:21:22.218 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2018-09-24 19:03:04.725 +08:00 [INF] 数据库初始化成功，本次共创建0条数据。
+2018-09-24 19:03:04.936 +08:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2018-09-24 19:03:45.639 +08:00 [INF] 数据库初始化成功，本次共创建0条数据。
+2018-09-24 19:03:45.860 +08:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2018-09-24 19:04:13.317 +08:00 [INF] AuthenticationScheme: Bearer was challenged.
+2018-09-24 19:05:15.131 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2018-09-24 19:05:15.662 +08:00 [INF] Token request validation success
+{
+  "ClientId": "browser_client",
+  "GrantType": "password",
+  "Scopes": "api offline_access openid profile",
+  "UserName": "admin",
+  "Raw": {
+    "username": "admin",
+    "password": "***REDACTED***",
+    "grant_type": "password",
+    "client_id": "browser_client",
+    "client_secret": "***REDACTED***"
+  }
+}
+2018-09-24 19:05:31.596 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2018-09-24 19:05:31.707 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2018-09-24 19:18:05.902 +08:00 [INF] 数据库初始化成功，本次共创建0条数据。
+2018-09-24 19:18:06.110 +08:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2018-09-24 19:18:11.353 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2018-09-24 19:18:11.858 +08:00 [INF] Token request validation success
+{
+  "ClientId": "browser_client",
+  "GrantType": "password",
+  "Scopes": "api offline_access openid profile",
+  "UserName": "admin",
+  "Raw": {
+    "username": "admin",
+    "password": "***REDACTED***",
+    "grant_type": "password",
+    "client_id": "browser_client",
+    "client_secret": "***REDACTED***"
+  }
+}
+2018-09-24 19:18:14.683 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2018-09-24 19:18:14.798 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2018-09-24 19:28:01.323 +08:00 [INF] 数据库初始化成功，本次共创建0条数据。
+2018-09-24 19:28:01.578 +08:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2018-09-24 19:29:05.958 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2018-09-24 19:29:06.077 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2018-09-24 19:29:14.090 +08:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: String reference not set to an instance of a String.
+Parameter name: s
+   at System.Text.Encoding.GetBytes(String s)
+   at Schany.Infrastructure.Common.Helpers.DESEncrypt.Encrypt(String Text, String sKey) in E:\MyProjects\后台框架学习\后台框架\dotNetCore\Schany.Infrastructure\Common.Helpers\DESEncrypt.cs:line 39
+   at Schany.Infrastructure.Common.Helpers.DESEncrypt.Encrypt(String Text) in E:\MyProjects\后台框架学习\后台框架\dotNetCore\Schany.Infrastructure\Common.Helpers\DESEncrypt.cs:line 26
+   at Schany.Api.Controllers.DataController.Des(String str) in E:\MyProjects\后台框架学习\后台框架\dotNetCore\Schany.Api\Controllers\DataController.cs:line 79
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\Hosting\IdentityServerMiddleware.cs:line 72
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2018-09-24 19:29:44.033 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2018-09-24 19:29:44.535 +08:00 [INF] Token request validation success
+{
+  "ClientId": "browser_client",
+  "GrantType": "password",
+  "Scopes": "api offline_access openid profile",
+  "UserName": "admin",
+  "Raw": {
+    "username": "admin",
+    "password": "***REDACTED***",
+    "grant_type": "password",
+    "client_id": "browser_client",
+    "client_secret": "***REDACTED***"
+  }
+}
+2018-09-24 19:30:38.924 +08:00 [INF] 数据库初始化成功，本次共创建0条数据。
+2018-09-24 19:30:39.139 +08:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2018-09-24 19:30:44.537 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2018-09-24 19:30:44.665 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks

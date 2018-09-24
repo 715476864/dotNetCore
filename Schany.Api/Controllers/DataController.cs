@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -97,7 +98,18 @@ namespace Schany.Api.Controllers
         public string GetEnumDes(DicType dic)
         {
             return dic.ToDescription();
-        } 
+        }
+        #endregion
+
+        #region Excel相关
+        [HttpPost]
+        [Route("[action]")]
+        public Notification ReadExcel(string filePath)
+        {
+            filePath = _hostingEnvironment.WebRootPath + filePath;
+            var data = ExcelHelper.ReadExcelToDataTable(filePath);
+            return new Notification(NotifyType.Success, "OK");
+        }        
         #endregion
     }
 }

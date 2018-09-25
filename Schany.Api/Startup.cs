@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Schany.Core.Dto;
+using Schany.Core.Service.SignalR;
 using Schany.Framework;
 
 namespace Schany.Api
@@ -69,6 +70,8 @@ namespace Schany.Api
             //Http请求访问器注入到DI容器
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+            services.AddSignalR();
+
             //业务逻辑注入到DI容器
             IocConfig.DoDependencyInjection(services);
 
@@ -88,7 +91,8 @@ namespace Schany.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }       
+            }
+            
                         
             //使用跨域中间件（配置允许任何请求源，请求头的请求。）
             app.UseCors("cors");
@@ -105,6 +109,12 @@ namespace Schany.Api
 
             //添加Authenticatio到HTTP管道中（它是负责验证Token的）
             app.UseAuthentication();
+
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<SchanyHub>("/schanyhub");
+            });
 
             //使用Mvc中间件并配置Mvc路由
             app.UseMvc(routeBuilder =>

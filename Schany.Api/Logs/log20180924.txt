@@ -1577,3 +1577,5 @@ System.NullReferenceException: Object reference not set to an instance of an obj
 2018-09-24 21:10:48.029 +08:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
 2018-09-24 21:10:55.177 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
 2018-09-24 21:10:55.305 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2018-09-24 21:16:27.537 +08:00 [INF] 数据库初始化成功，本次共创建0条数据。
+2018-09-24 21:16:27.736 +08:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
